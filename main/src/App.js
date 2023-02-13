@@ -1,14 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import XMLParser from "xml-js";
+import { useEffect } from "react";
 import JejuSearch from "./components/JejuSearch";
 
-function App() {
-  return (
-    <div className="App">
-      <JejuSearch />
-    </div>
-  );
-}
+const InData = ()=>{
+  const callApi = async()=>{
+    axios.get('/api').then((res)=>console.log(res));
+  }
+  useEffect(()=>{
+  callApi();
+},[]);
+return <div>
+  <JejuSearch/>
+</div>;
+};
 
-export default App;
+export default InData;
