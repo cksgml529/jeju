@@ -1,0 +1,26 @@
+.jeju {
+  button {
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  .searchAir {
+    .selectPort {
+      .list {
+        li {
+          position: relative;
+          cursor: pointer;
+        }
+        ul {
+          border: 1px solid #000;
+          background-color: #fff;
+          &.on {
+          }
+        }
+      }
+    }
+    .selectTime {
+      display: flex;
+    }
+  }
+}

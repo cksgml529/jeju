@@ -1,17 +1,14 @@
-import axios from "axios";
-import { useEffect } from "react";
+import React from "react";
 import JejuSearch from "./components/JejuSearch";
 
-const InData = ()=>{
-  const callApi = async()=>{
-    axios.get('/api').then((res)=>console.log(res));
-  }
-  useEffect(()=>{
-  callApi();
-},[]);
-return <div>
-  <JejuSearch/>
-</div>;
-};
+import "./assets/style/reset.css";
 
-export default InData;
+function App() {
+  return (
+    <div>
+      <JejuSearch />
+    </div>
+  );
+}
+
+export default App;
