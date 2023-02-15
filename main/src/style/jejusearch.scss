@@ -4,7 +4,14 @@
     background-color: #fff;
     cursor: pointer;
   }
+  .mBtn {
+    display: none;
+  }
+  .mBtnClose {
+    display: none;
+  }
   .searchAir {
+    display: flex;
     .selectPort {
       .list {
         li {
@@ -12,15 +19,52 @@
           cursor: pointer;
         }
         ul {
+          position: absolute;
           border: 1px solid #000;
           background-color: #fff;
+          display: none;
           &.on {
+            display: block;
           }
         }
       }
     }
     .selectTime {
       display: flex;
+    }
+    .sort {
+      ul {
+        li {
+          position: relative;
+          cursor: pointer;
+          ul {
+            position: absolute;
+            border: 1px solid #000;
+            background-color: #fff;
+            display: none;
+            &.on {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+    .airLine {
+      .airList {
+        li {
+          position: relative;
+          cursor: pointer;
+          ul {
+            position: absolute;
+            border: 1px solid #000;
+            background-color: #fff;
+            display: none;
+            &.on {
+              display: block;
+            }
+          }
+        }
+      }
     }
   }
 }
