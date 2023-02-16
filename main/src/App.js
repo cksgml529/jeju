@@ -1,12 +1,12 @@
 import React from "react";
-import JejuSearch from "./components/JejuSearch";
+import Jeju from "./components/Jeju";
 
 import "./assets/style/reset.css";
 
 function App() {
   return (
     <div>
-      <JejuSearch />
+      <Jeju />
     </div>
   );
 }
