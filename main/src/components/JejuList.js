@@ -66,7 +66,19 @@ function JejuList({ data }) {
     setPlane(value);
   };
   //   조회버튼
-  const totalScan = () => {};
+  const totalScan = () => {
+    console.log(data);
+   const status = data.filter((item)=>item.rmkKor._text ==='출발'&&go);
+   const port = data.filter((item)=>item.boardingKor._text ===selectAir);
+   const time = data.filter((item)=>item.std._text ===String(startHour)+startMin);
+   const sort = data.filter((item)=>item.line._text === filter);
+   const com = data.filter((item)=>item.airlineKorean._text === airPort);
+   
+
+    console.log(time);
+    
+
+  };
   return (
     <div className="jeju">
       <h1>제주공항</h1>
@@ -410,7 +422,7 @@ function JejuList({ data }) {
                     </button>
                   </li>
                   <li className={airPort === "아시아나" ? "on" : null}>
-                    <button value="아시아나" onClick={onClickCo}>
+                    <button value="아시아나항공" onClick={onClickCo}>
                       아시아나
                     </button>
                   </li>
@@ -435,7 +447,7 @@ function JejuList({ data }) {
                     </button>
                   </li>
                   <li className={airPort === "티웨이" ? "on" : null}>
-                    <button value="티웨이" onClick={onClickCo}>
+                    <button value="티웨이항공" onClick={onClickCo}>
                       티웨이
                     </button>
                   </li>
