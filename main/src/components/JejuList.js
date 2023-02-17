@@ -1,6 +1,7 @@
 import { useState } from "react";
 import moment from "moment";
 import "../style/jeju.scss";
+import JejuResult from "./JejuResult";
 
 function JejuList({ data }) {
   // 출발 or 도착
@@ -16,8 +17,10 @@ function JejuList({ data }) {
   const [endMin, setEndMin] = useState("00");
   //분류
   const [filter, setFilter] = useState("전체");
+  const [sortValue, setSortValue] = useState("전체");
   //항공사
   const [airPort, setAirPort] = useState("전체");
+  const [portValue, setPortValue] = useState("전체");
   //편명
   const [plane, setPlane] = useState("");
   //   선택된 data값
@@ -55,10 +58,14 @@ function JejuList({ data }) {
   // 구분
   const onClickSort = (e) => {
     setFilter(e.target.innerText);
+    // 국내.국제 value저장
+    setSortValue(e.target.value);
   };
   // 항공사
   const onClickCo = (e) => {
     setAirPort(e.target.innerText);
+    // 항공사 value 저장
+    setPortValue(e.target.value);
   };
   //   편명 입력
   const onChangeTxt = (e) => {
@@ -67,17 +74,25 @@ function JejuList({ data }) {
   };
   //   조회버튼
   const totalScan = () => {
-    console.log(data);
-   const status = data.filter((item)=>item.rmkKor._text ==='출발'&&go);
-   const port = data.filter((item)=>item.boardingKor._text ===selectAir);
-   const time = data.filter((item)=>item.std._text ===String(startHour)+startMin);
-   const sort = data.filter((item)=>item.line._text === filter);
-   const com = data.filter((item)=>item.airlineKorean._text === airPort);
-   
+    const status = data.filter(
+      (item) =>
+        item.io._text === "O" &&
+        go &&
+        item.boardingKor._text === selectAir &&
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        item.line._text === sortValue
+    );
+    const statusNo = data.filter(
+      (item) =>
+        item.io._text === "I" &&
+        !go &&
+        item.arrivedKor._text === selectAir &&
+        item.line._text === sortValue &&
+        item.airlineKorean._text === portValue
+    );
 
-    console.log(time);
-    
-
+    setTotal(status);
   };
   return (
     <div className="jeju">
@@ -309,7 +324,7 @@ function JejuList({ data }) {
                   <option value="23">23</option>
                   <option value="24">24</option>
                 </select>
-                <select className="endtMin" onChange={onEndMin}>
+                <select className="endMin" onChange={onEndMin}>
                   <option value="00">00</option>
                   <option value="01">01</option>
                   <option value="02">02</option>
@@ -381,18 +396,18 @@ function JejuList({ data }) {
               <li onClick={() => setOpenSort(!openSort)}>
                 {filter}
                 <ul className={openSort ? "on" : null}>
-                  <li className={filter === "전체" ? "on" : null}>
-                    <button value="전체" onClick={onClickSort}>
-                      전체
+                  <li className={filter === "선택" ? "on" : null}>
+                    <button value="선택" onClick={onClickSort}>
+                      선택
                     </button>
                   </li>
                   <li className={filter === "국내선" ? "on" : null}>
-                    <button value="국내선" onClick={onClickSort}>
+                    <button value="국내" onClick={onClickSort}>
                       국내선
                     </button>
                   </li>
                   <li className={filter === "국제선" ? "on" : null}>
-                    <button value="국제선" onClick={onClickSort}>
+                    <button value="국제" onClick={onClickSort}>
                       국제선
                     </button>
                   </li>
@@ -411,9 +426,9 @@ function JejuList({ data }) {
               <li onClick={() => setOpenCo(!openCo)}>
                 {airPort}
                 <ul className={openCo ? "on" : null}>
-                  <li className={airPort === "선택" ? "on" : null}>
-                    <button value="선택" onClick={onClickCo}>
-                      선택
+                  <li className={airPort === "전체" ? "on" : null}>
+                    <button value="전체" onClick={onClickCo}>
+                      전체
                     </button>
                   </li>
                   <li className={airPort === "대한항공" ? "on" : null}>
@@ -492,11 +507,12 @@ function JejuList({ data }) {
             </form>
           </div>
           <div>
-            <button className="totalSearch" onClick={totalScan}>
+            <button onClick={totalScan} className="totalSearch">
               조회
             </button>
           </div>
         </div>
+        {total ? <JejuResult display={total} /> : null}
       </div>
     </div>
   );
