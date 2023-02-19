@@ -4,10 +4,11 @@ import "../style/jejuResult.scss";
 import { useRef } from "react";
 
 function JejuResult({ display }) {
+  const array = display.slice(0,3);
   return (
     <div className="jejuResult">
       <ul>
-        {display.map((item) => {
+        {array.map((item) => {
           return (
             <li>
               <div className="delayTime">
@@ -18,9 +19,9 @@ function JejuResult({ display }) {
                 <p className="charge">{moment(item.etd._text,'HHmm').format('HH:mm')}</p>  
               </div>
               <div className="airName">
-                <p>{item.line._text}</p>
-                <span>{item.airFln._text}</span>
-                <p>{item.airlineKorean._text}</p>
+                <span>{item.line._text}</span>
+                <p>{item.airFln._text}</p>
+                <span>{item.airlineKorean._text}</span>
               </div>
               <div className="nowStatus">
                 <span>{item.rmkKor._text ? item.rmkKor._text : "지연"}</span>

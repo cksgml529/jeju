@@ -1,7 +1,8 @@
 .jejuResult {
+  width: 70vw;
+  border: 1px solid #000;
+  background-color: rgba($color: #000000, $alpha: 0.4);
   ul {
-    width: 70vw;
-    background-color: rgba($color: #000000, $alpha: 0.4);
     margin-top: 30px;
     li {
       width: 100%;
@@ -10,7 +11,7 @@
       align-items: center;
       padding-bottom: 3vw;
       .delayTime {
-        width: 30%;
+        // width: 30%;
         display: flex;
 
         .charge {
@@ -20,16 +21,19 @@
         }
       }
       .airName {
-        // width: 45%;
+        width: 60%;
         display: flex;
         align-items: center;
 
         span {
           padding-right: 1vw;
-          width: 22%;
+          // width: 22%;
         }
         p {
+          width: 20%;
           position: relative;
+          padding-right: 1vw;
+          
           &::before {
             content: "";
             width: 1px;
@@ -42,7 +46,7 @@
         }
       }
       .nowStatus {
-        width: 15%;
+        // width: 15%;
         span {
           background-color: #00589E;
           color: #fff;

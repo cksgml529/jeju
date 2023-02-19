@@ -178,53 +178,53 @@ function JejuList({ data }) {
                       대구
                     </button>
                   </li>
-                  <li className={selectAir === "울산" ? "on" : null}>
-                    <button data-apcd="USN" onClick={onClickAir}>
+                  <li className={selectAir === "울산" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="USN" >
                       울산
                     </button>
                   </li>
-                  <li className={selectAir === "청주" ? "on" : null}>
-                    <button data-apcd="CJJ" onClick={onClickAir}>
+                  <li className={selectAir === "청주" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="CJJ">
                       청주
                     </button>
                   </li>
-                  <li className={selectAir === "무안" ? "on" : null}>
-                    <button data-apcd="MWX" onClick={onClickAir}>
+                  <li className={selectAir === "무안" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="MWX" >
                       무안
                     </button>
                   </li>
-                  <li className={selectAir === "광주" ? "on" : null}>
-                    <button data-apcd="KWJ" onClick={onClickAir}>
+                  <li className={selectAir === "광주" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="KWJ" >
                       광주
                     </button>
                   </li>
-                  <li className={selectAir === "여수" ? "on" : null}>
-                    <button data-apcd="RSU" onClick={onClickAir}>
+                  <li className={selectAir === "여수" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="RSU" >
                       여수
                     </button>
                   </li>
-                  <li className={selectAir === "포항경주" ? "on" : null}>
-                    <button data-apcd="KPO" onClick={onClickAir}>
+                  <li className={selectAir === "포항경주" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="KPO">
                       포항경주
                     </button>
                   </li>
-                  <li className={selectAir === "양양" ? "on" : null}>
-                    <button data-apcd="YNY" onClick={onClickAir}>
+                  <li className={selectAir === "양양" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="YNY" >
                       양양
                     </button>
                   </li>
-                  <li className={selectAir === "사천" ? "on" : null}>
-                    <button data-apcd="HIN" onClick={onClickAir}>
+                  <li className={selectAir === "사천" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="HIN">
                       사천
                     </button>
                   </li>
-                  <li className={selectAir === "군산" ? "on" : null}>
-                    <button data-apcd="KUV" onClick={onClickAir}>
+                  <li className={selectAir === "군산" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="KUV">
                       군산
                     </button>
                   </li>
-                  <li className={selectAir === "횡성/원주" ? "on" : null}>
-                    <button data-apcd="WJU" onClick={onClickAir}>
+                  <li className={selectAir === "횡성/원주" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="WJU" >
                       횡성/원주
                     </button>
                   </li>
@@ -440,18 +440,18 @@ function JejuList({ data }) {
               <li onClick={() => setOpenSort(!openSort)}>
                 {filter}
                 <ul className={openSort ? "on" : null}>
-                  <li className={filter === "전체" ? "on" : null}>
-                    <button value="전체" onClick={onClickSort}>
-                      선택
+                  <li className={filter === "전체" ? "on" : null} onClick={onClickSort}>
+                    <button value="전체" >
+                      전체
                     </button>
                   </li>
-                  <li className={filter === "국내선" ? "on" : null}>
-                    <button value="국내" onClick={onClickSort}>
+                  <li className={filter === "국내선" ? "on" : null} onClick={onClickSort}>
+                    <button value="국내" >
                       국내선
                     </button>
                   </li>
-                  <li className={filter === "국제선" ? "on" : null}>
-                    <button value="국제" onClick={onClickSort}>
+                  <li className={filter === "국제선" ? "on" : null} onClick={onClickSort}>
+                    <button value="국제">
                       국제선
                     </button>
                   </li>
@@ -470,63 +470,63 @@ function JejuList({ data }) {
               <li onClick={() => setOpenCo(!openCo)}>
                 {airPort}
                 <ul className={openCo ? "on" : null}>
-                  <li className={airPort === "전체" ? "on" : null}>
-                    <button value="전체" onClick={onClickCo}>
+                  <li className={airPort === "전체" ? "on" : null} onClick={onClickCo}>
+                    <button value="전체" >
                       전체
                     </button>
                   </li>
-                  <li className={airPort === "대한항공" ? "on" : null}>
-                    <button value="대한항공" onClick={onClickCo}>
+                  <li className={airPort === "대한항공" ? "on" : null} onClick={onClickCo}>
+                    <button value="대한항공" >
                       대한항공
                     </button>
                   </li>
-                  <li className={airPort === "아시아나" ? "on" : null}>
-                    <button value="아시아나항공" onClick={onClickCo}>
+                  <li className={airPort === "아시아나" ? "on" : null} onClick={onClickCo}>
+                    <button value="아시아나항공" >
                       아시아나
                     </button>
                   </li>
-                  <li className={airPort === "에어부산" ? "on" : null}>
-                    <button value="에어부산" onClick={onClickCo}>
+                  <li className={airPort === "에어부산" ? "on" : null} onClick={onClickCo}>
+                    <button value="에어부산" >
                       에어부산
                     </button>
                   </li>
-                  <li className={airPort === "에어서울" ? "on" : null}>
-                    <button value="에어서울" onClick={onClickCo}>
+                  <li className={airPort === "에어서울" ? "on" : null} onClick={onClickCo}>
+                    <button value="에어서울" >
                       에어서울
                     </button>
                   </li>
-                  <li className={airPort === "제주항공" ? "on" : null}>
-                    <button value="제주항공" onClick={onClickCo}>
+                  <li className={airPort === "제주항공" ? "on" : null} onClick={onClickCo}>
+                    <button value="제주항공" >
                       제주항공
                     </button>
                   </li>
-                  <li className={airPort === "진에어" ? "on" : null}>
-                    <button value="진에어" onClick={onClickCo}>
+                  <li className={airPort === "진에어" ? "on" : null} onClick={onClickCo}>
+                    <button value="진에어" >
                       진에어
                     </button>
                   </li>
-                  <li className={airPort === "티웨이" ? "on" : null}>
-                    <button value="티웨이항공" onClick={onClickCo}>
+                  <li className={airPort === "티웨이" ? "on" : null} onClick={onClickCo}>
+                    <button value="티웨이항공" >
                       티웨이
                     </button>
                   </li>
-                  <li className={airPort === "하이에어" ? "on" : null}>
-                    <button value="하이에어" onClick={onClickCo}>
+                  <li className={airPort === "하이에어" ? "on" : null} onClick={onClickCo}>
+                    <button value="하이에어">
                       하이에어
                     </button>
                   </li>
-                  <li className={airPort === "플라이강원" ? "on" : null}>
-                    <button value="플라이강원" onClick={onClickCo}>
+                  <li className={airPort === "플라이강원" ? "on" : null} onClick={onClickCo}>
+                    <button value="플라이강원">
                       플라이강원
                     </button>
                   </li>
-                  <li className={airPort === "에어로케이항공" ? "on" : null}>
-                    <button value="에어로케이항공" onClick={onClickCo}>
+                  <li className={airPort === "에어로케이항공" ? "on" : null} onClick={onClickCo}>
+                    <button value="에어로케이항공">
                       에어로케이항공
                     </button>
                   </li>
-                  <li className={airPort === "에어프레미아" ? "on" : null}>
-                    <button value="에어프레미아" onClick={onClickCo}>
+                  <li className={airPort === "에어프레미아" ? "on" : null} onClick={onClickCo}>
+                    <button value="에어프레미아">
                       에어프레미아
                     </button>
                   </li>
