@@ -34,7 +34,6 @@ function Jeju() {
   }, []);
   return (
     <div>
-      {console.log(data)}
       <JejuList data={data} />
     </div>
   );

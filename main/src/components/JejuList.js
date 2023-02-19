@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment";
 import "../style/jeju.scss";
 import JejuResult from "./JejuResult";
@@ -67,33 +67,77 @@ function JejuList({ data }) {
     // 항공사 value 저장
     setPortValue(e.target.value);
   };
-  //   편명 입력
-  const onChangeTxt = (e) => {
-    const { value } = e.target.value;
-    setPlane(value);
-  };
+  useEffect(()=>{
+  },[plane])
   //   조회버튼
   const totalScan = () => {
-    const status = data.filter(
+    if(go){ // 출발일 경우  
+      
+      const status = data.filter(
       (item) =>
-        item.io._text === "O" &&
-        go &&
+      //sort 전체
+      (item.io._text === "O" &&
         item.boardingKor._text === selectAir &&
         item.std._text >= String(startHour) + startMin &&
         item.std._text < String(endHour) + endMin &&
-        item.line._text === sortValue
+        sortValue==='전체')||//항공사 전체
+        (item.io._text === "O" &&
+        item.boardingKor._text === selectAir &&
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        item.line._text === sortValue&&airPort==='전체')||
+        (item.io._text === "O" &&
+        item.boardingKor._text === selectAir &&
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        item.line._text === sortValue&&item.airlineKorean._text===portValue)||//편명까지 전체 기재
+      (item.io._text === "O" &&
+        item.boardingKor._text === selectAir &&
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        item.line._text === sortValue&&item.airlineKorean._text===portValue&&
+      item.airFln._text===plane)
     );
-    const statusNo = data.filter(
+      setTotal(status);
+
+    }else{// 도착일 경우
+       const statusNo = data.filter(
       (item) =>
-        item.io._text === "I" &&
-        !go &&
+      (item.io._text ==="I" &&
         item.arrivedKor._text === selectAir &&
-        item.line._text === sortValue &&
-        item.airlineKorean._text === portValue
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        sortValue==='전체')||//항공사 전체
+        (item.io._text ==="I" &&
+        item.arrivedKor._text === selectAir &&
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        item.line._text === sortValue&&airPort==='전체')||
+        (item.io._text ==="I" &&
+        item.arrivedKor._text === selectAir &&
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        item.line._text === sortValue&&item.airlineKorean._text===portValue)||
+        (item.io._text ==="I" &&
+        item.arrivedKor._text === selectAir &&
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        item.line._text === sortValue&&item.airlineKorean._text===portValue&&portValue==='전체'&&item.airFln._text===plane)||//편명까지 전체 기재
+      (item.io._text ==="I" &&
+        item.arrivedKor._text === selectAir &&
+        item.std._text >= String(startHour) + startMin &&
+        item.std._text < String(endHour) + endMin &&
+        item.line._text === sortValue&&item.airlineKorean._text===portValue&&
+      item.airFln._text===plane)
     );
 
-    setTotal(status);
-  };
+       setTotal(statusNo);
+    }
+
+  
+
+  };  
+  
   return (
     <div className="jeju">
       <h1>제주공항</h1>
@@ -114,23 +158,23 @@ function JejuList({ data }) {
               <li onClick={() => setOpenAir(!openAir)}>
                 {selectAir}
                 <ul className={openAir ? "on" : null}>
-                  <li className={selectAir === "서울/김포" ? "on" : null}>
-                    <button data-apcd="GMP" onClick={onClickAir}>
+                  <li className={selectAir === "서울/김포" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="GMP" >
                       서울/김포
                     </button>
                   </li>
-                  <li className={selectAir === "부산/김해" ? "on" : null}>
-                    <button data-apcd="PUS" onClick={onClickAir}>
+                  <li className={selectAir === "부산/김해" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="PUS">
                       부산/김해
                     </button>
                   </li>
-                  <li className={selectAir === "제주" ? "on" : null}>
-                    <button data-apcd="CJS" onClick={onClickAir}>
+                  <li className={selectAir === "제주" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="CJS" >
                       제주
                     </button>
                   </li>
-                  <li className={selectAir === "대구" ? "on" : null}>
-                    <button data-apcd="TAE" onClick={onClickAir}>
+                  <li className={selectAir === "대구" ? "on" : null} onClick={onClickAir}>
+                    <button data-apcd="TAE">
                       대구
                     </button>
                   </li>
@@ -396,8 +440,8 @@ function JejuList({ data }) {
               <li onClick={() => setOpenSort(!openSort)}>
                 {filter}
                 <ul className={openSort ? "on" : null}>
-                  <li className={filter === "선택" ? "on" : null}>
-                    <button value="선택" onClick={onClickSort}>
+                  <li className={filter === "전체" ? "on" : null}>
+                    <button value="전체" onClick={onClickSort}>
                       선택
                     </button>
                   </li>
@@ -499,10 +543,10 @@ function JejuList({ data }) {
             <form>
               <input
                 type="text"
-                name="planename"
-                value={plane}
+                name="planeName"
                 placeholder="편명 입력"
-                onChange={onChangeTxt}
+                value={plane}
+                onChange={(e)=>{setPlane(e.target.value)}}
               />
             </form>
           </div>
