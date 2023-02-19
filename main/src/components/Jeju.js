@@ -29,10 +29,12 @@ function Jeju() {
   useEffect(() => {
     axios.get("/api").then((res) => {
       setData(res.data.response.body.items.item);
+      
     });
   }, []);
   return (
     <div>
+      {console.log(data)}
       <JejuList data={data} />
     </div>
   );
