@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/jeju/static/css/main.3420e77c.css",
+    "main.js": "/jeju/static/js/main.c6341fb0.js",
+    "index.html": "/jeju/index.html",
+    "main.3420e77c.css.map": "/jeju/static/css/main.3420e77c.css.map",
+    "main.c6341fb0.js.map": "/jeju/static/js/main.c6341fb0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3420e77c.css",
+    "static/js/main.c6341fb0.js"
+  ]
+}
