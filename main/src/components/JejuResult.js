@@ -1,23 +1,21 @@
-import { useState } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
+import moment from "moment";
 import "../style/jejuResult.scss";
 
 function JejuResult({ display }) {
-const [time,setTime] = useState(display.std._text);
-const [delay,setDelay] = useState(null);
+ 
   return (
     <div className="jejuResult">
       <ul>
-        {display.map((item, idx) => {
-          
+        {display.map((item) => {
           return (
-            <li key={item.idx}>
+            <li>
               <div className="delayTime">
-                <p>{time}</p>
+                <p>{moment(item.std._text,'HHmm').format('HH:mm')}</p>
                 <span>
                   <BsArrowRightShort />
                 </span>
-                <p className="charge">{item.etd._text}</p>  
+                <p className="charge">{moment(item.etd._text,'HHmm').format('HH:mm')}</p>  
               </div>
               <div className="airName">
                 <span>{item.airFln._text}</span>
