@@ -3,13 +3,12 @@
   ul {
     border: 1px solid #000;
     background-color: rgba($color: #000000, $alpha: 0.4);
-    margin-top: 30px;
     li {
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 3vw;
+      margin: 1vw 0;
       .delayTime {
         // width: 30%;
         display: flex;

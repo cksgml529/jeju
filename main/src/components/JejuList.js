@@ -24,7 +24,7 @@ function JejuList({ data }) {
   const [portValue, setPortValue] = useState("전체");
 
   //   선택된 data값
-  const [total, setTotal] = useState([]);
+  const [total, setTotal] = useState();
 
   //공항 리스트 열기
   const [openAir, setOpenAir] = useState(false);
@@ -33,7 +33,10 @@ function JejuList({ data }) {
   //항공사 리스트 열기
   const [openCo, setOpenCo] = useState(false);
 
-  // 공항 선택시 텍스트 출력+공항코드 가져오기
+  //결과값 출력시 위치변경
+  const [move, setMove] = useState(false);
+
+  // 공항 선택시 텍스트 출력 가져오기
   const onClickAir = (e) => {
     setselectAir(e.target.innerText);
   };
@@ -68,7 +71,6 @@ function JejuList({ data }) {
   const totalScan = () => {
     if (go) {
       // 출발일 경우
-
       const status = array.filter(
         (item) =>
           //sort 전체
@@ -83,6 +85,13 @@ function JejuList({ data }) {
             item.std._text < String(endHour) + endMin &&
             item.line._text === sortValue &&
             airPort === "전체") ||
+          (item.io._text === "O" &&
+            item.boardingKor._text === selectAir &&
+            item.std._text >= String(startHour) + startMin &&
+            item.std._text < String(endHour) + endMin &&
+            item.line._text === sortValue &&
+            airPort === "전체" &&
+            item.airlineKorean._text === portValue) ||
           (item.io._text === "O" &&
             item.boardingKor._text === selectAir &&
             item.std._text >= String(startHour) + startMin &&
@@ -104,6 +113,12 @@ function JejuList({ data }) {
             item.arrivedKor._text === selectAir &&
             item.std._text >= String(startHour) + startMin &&
             item.std._text < String(endHour) + endMin &&
+            sortValue === "전체" &&
+            item.airlineKorean._text === portValue) ||
+          (item.io._text === "I" &&
+            item.arrivedKor._text === selectAir &&
+            item.std._text >= String(startHour) + startMin &&
+            item.std._text < String(endHour) + endMin &&
             item.line._text === sortValue &&
             airPort === "전체") ||
           (item.io._text === "I" &&
@@ -116,13 +131,14 @@ function JejuList({ data }) {
 
       setTotal(statusNo);
     }
+    setMove(true);
   };
 
   return (
     <div className="jeju">
       <h1>제주공항</h1>
 
-      <div className="searchAir">
+      <div className={move ? "searchAir on" : "searchAir"}>
         <div className="startEnd">
           <button className={go ? "on" : null} onClick={() => setGo(true)}>
             <span>출발</span>
