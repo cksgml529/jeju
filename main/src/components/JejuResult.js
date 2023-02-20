@@ -6,7 +6,7 @@ function JejuResult({ display }) {
   return (
     <div className="jejuResult">
       {display.length === 0 ? (
-        <p className="floatNone">현재 운항중인 항공사가 존재하지 않습니다.</p>
+        <p>현재 운항중인 항공사가 존재하지 않습니다.</p>
       ) : (
         <ul>
           {display.map((item) => {

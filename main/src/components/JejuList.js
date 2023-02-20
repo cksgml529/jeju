@@ -22,8 +22,7 @@ function JejuList({ data }) {
   //항공사
   const [airPort, setAirPort] = useState("전체");
   const [portValue, setPortValue] = useState("전체");
-  //편명
-  const [plane, setPlane] = useState("");
+
   //   선택된 data값
   const [total, setTotal] = useState([]);
 
@@ -35,12 +34,12 @@ function JejuList({ data }) {
   const [openCo, setOpenCo] = useState(false);
 
   //선택된 공항코드 값 받기
-  const [airCode, setAirCode] = useState("CJU");
+  // const [airCode, setAirCode] = useState("CJU");
 
   // 공항 선택시 텍스트 출력+공항코드 가져오기
   const onClickAir = (e) => {
     setselectAir(e.target.innerText);
-    setAirCode(e.target.dataset["apcd"]);
+    // setAirCode(e.target.dataset["apcd"]);
   };
   //   시간
   const onStartHour = (e) => {
