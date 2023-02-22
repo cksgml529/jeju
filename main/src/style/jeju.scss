@@ -1,4 +1,5 @@
 .jeju {
+  height: 100vh;
   button {
     border: none;
     background-color: #fff;
@@ -12,7 +13,11 @@
   }
   .searchAir {
     width: 70vw;
-    margin: 30vw auto 0;
+    margin: 37vw auto 0;
+    transition: 0.4s;
+    &.on {
+      margin: 30vw auto 0;
+    }
     .startEnd {
       margin-bottom: 1vw;
       button {
@@ -67,14 +72,13 @@
                 0px 15.1px 33.4px rgba(0, 0, 0, 0.05),
                 0px 33px 80px rgba(0, 0, 0, 0.07);
             }
-            li{
-            &.on{
-              button{
-                color: #00589E;
-                font-weight: bold;
+            li {
+              &.on {
+                button {
+                  color: #00589e;
+                  font-weight: bold;
+                }
               }
-            }
-              
             }
           }
         }
@@ -145,10 +149,10 @@
                   0px 15.1px 33.4px rgba(0, 0, 0, 0.05),
                   0px 33px 80px rgba(0, 0, 0, 0.07);
               }
-              li{
-                &.on{
-                  button{
-                    color: #00589E;
+              li {
+                &.on {
+                  button {
+                    color: #00589e;
                     font-weight: bold;
                   }
                 }
@@ -182,10 +186,10 @@
                   0px 15.1px 33.4px rgba(0, 0, 0, 0.05),
                   0px 33px 80px rgba(0, 0, 0, 0.07);
               }
-              li{
-                &.on{
-                  button{
-                    color: #00589E;
+              li {
+                &.on {
+                  button {
+                    color: #00589e;
                     font-weight: bold;
                   }
                 }
